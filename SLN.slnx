@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SmartResponse.API/SmartResponse.API.csproj" />
+  <Project Path="SmartResponse.Core/SmartResponse.Core.csproj" />
+  <Project Path="SmartResponse.Infrastructure/SmartResponse.Infrastructure.csproj" />
+</Solution>
