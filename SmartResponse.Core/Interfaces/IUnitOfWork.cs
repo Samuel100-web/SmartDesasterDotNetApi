@@ -20,6 +20,7 @@ namespace SmartResponse.Core.Interfaces
         IGenericRepository<PaymentMethod> PaymentMethods { get; }
         IGenericRepository<DonationItem> DonationItems { get; }
         IGenericRepository<Ngo> Ngos { get; }
+        IGenericRepository<HomeSlider> HomeSlider { get; }
 
         Task<int> CompleteAsync();
     }

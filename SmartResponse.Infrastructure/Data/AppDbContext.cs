@@ -23,6 +23,7 @@ namespace SmartResponse.Infrastructure.Data
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<DonationItem> DonationItems { get; set; }
         public DbSet<Ngo> Ngos { get; set; }
+        public DbSet<HomeSlider> HomeSliders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

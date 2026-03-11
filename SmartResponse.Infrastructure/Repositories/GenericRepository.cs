@@ -4,8 +4,7 @@ using SmartResponse.Infrastructure.Data;
 using System.Linq.Expressions;
 
 namespace SmartResponse.Infrastructure.Repositories
-{
-    // Infrastructure/Repositories/GenericRepository.cs
+{    
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly AppDbContext _context;
@@ -14,8 +13,7 @@ namespace SmartResponse.Infrastructure.Repositories
         public async Task<T?> GetByIdAsync(Guid id) => await _context.Set<T>().FindAsync(id);
 
         public async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
-
-        // Professional Implementation: Navigation properties ko include karne ke liye
+        
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = _context.Set<T>();

@@ -148,19 +148,18 @@ namespace SmartResponse.Infrastructure.Services
                         string weatherMain = data.GetProperty("weather")[0].GetProperty("main").GetString()!;
                         string temp = data.GetProperty("main").GetProperty("temp").ToString();
 
-                        // NO FILTER: Har mausam ka record save hoga
+                        
                         await SaveIncident(
                             $"Weather: {city.Name} ({weatherMain})",
                             $"Status: {weatherMain}. Temperature: {temp}°C. Global Update.",
                             decimal.Parse(city.Lat),
                             decimal.Parse(city.Lon),
                             "OpenWeather",
-                            new Guid("79c72076-905c-426c-829d-6401f8d4e41f") // General Alert ID
+                            new Guid("79c72076-905c-426c-829d-6401f8d4e41f") 
                         );
                     }
                     else
-                    {
-                        // Agar API error de rahi hai to usay SyncLog mein record karen
+                    {                        
                         var errorContent = await response.Content.ReadAsStringAsync();
                         _logger.LogWarning($"OpenWeather API Error for {city.Name}: {errorContent}");
                     }
@@ -172,10 +171,9 @@ namespace SmartResponse.Infrastructure.Services
             }
         }
 
-        // --- COMMON SAVE LOGIC ---
+        
         private async Task SaveIncident(string title, string desc, decimal lat, decimal lon, string source, Guid typeId)
-        {
-            // DUPLICATE CHECK: Boht zaroori hai taake hazaron records duplicate na hon
+        {            
             var existing = await _uow.Incidents.FindAsync(i => i.Title == title);
             if (existing.Any()) return;
 

@@ -27,6 +27,7 @@ namespace SmartResponse.Infrastructure.Repositories
             PaymentMethods = new GenericRepository<PaymentMethod>(_context);
             DonationItems = new GenericRepository<DonationItem>(_context);
             Ngos = new GenericRepository<Ngo>(_context);
+            HomeSlider = new GenericRepository<HomeSlider>(_context);
         }
 
         public IGenericRepository<Incident> Incidents { get; private set; }
@@ -43,7 +44,9 @@ namespace SmartResponse.Infrastructure.Repositories
         public IGenericRepository<DonationCategory> DonationCategories { get; private set; }
         public IGenericRepository<PaymentMethod> PaymentMethods { get; private set; }
         public IGenericRepository<DonationItem> DonationItems { get; private set; }
-        public IGenericRepository<Ngo> Ngos { get; private set; }
+        public IGenericRepository<Ngo> Ngos { get; private set; }       
+
+        public IGenericRepository<HomeSlider> HomeSlider { get; private set; }
 
         public async Task<int> CompleteAsync() => await _context.SaveChangesAsync();
         public void Dispose() => _context.Dispose();

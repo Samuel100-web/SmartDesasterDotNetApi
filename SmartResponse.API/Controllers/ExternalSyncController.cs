@@ -47,10 +47,7 @@ namespace SmartResponse.API.Controllers
                 if (!response.IsSuccessStatusCode) throw new Exception("USGS API unreachable");
 
                 var data = await response.Content.ReadFromJsonAsync<dynamic>();
-                int addedCount = 0;
-
-                // Yahan hum data ko loop kar ke 'Incidents' table mein save karenge
-                // (Mapping logic hum Background Worker mein detail se likhenge)
+                int addedCount = 0;                
 
                 log.Status = "Success";
                 log.RecordsAdded = addedCount;

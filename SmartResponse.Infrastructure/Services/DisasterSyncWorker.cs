@@ -27,8 +27,7 @@ namespace SmartResponse.Infrastructure.Services
                     var syncService = scope.ServiceProvider.GetRequiredService<IExternalSyncService>();
                     await syncService.SyncAllApis();
                 }
-
-                // Har 30 Minute baad check karega (Aap 15 bhi kar sakte hain)
+                
                 await Task.Delay(TimeSpan.FromMinutes(30), stoppingToken);
             }
         }
